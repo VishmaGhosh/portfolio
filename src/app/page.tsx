@@ -50,13 +50,13 @@ const projects = [
   },
   {
     number: "04",
-    name: "Affiliate Marketing",
-    category: "Affiliate marketing · Product discovery",
+    name: "Redclub",
+    category: "Affiliate marketing · Influencer growth",
     description:
-      "A product discovery experience connecting useful content and promoted products with clear paths to retailer destinations.",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      "A performance marketing website presenting Redclub’s affiliate, creator, and traffic growth services for e-commerce and iGaming brands.",
+    stack: ["React", "Next.js", "TypeScript", "Responsive UI"],
     href: "/work/affiliate-marketing",
-    visual: "affiliate",
+    visual: "redclub",
     note: "Frontend development · eOrigami Software",
   },
 ];
@@ -124,11 +124,11 @@ export default function Home() {
             <article className="project-card" key={project.number}>
               <Link className={`project-visual ${project.visual}`} href={project.href} aria-label={`View the ${project.name} case study`}>
                 <div className="visual-grid" />
-                {project.visual === "affiliate" ? (
-                  <div className="affiliate-preview">
-                    <div className="affiliate-top"><span>FINDS / EDIT</span><span>CURATED FOR YOU</span></div>
-                    <div className="affiliate-products"><i /><i /><i /></div>
-                    <div className="affiliate-bottom"><span>GOOD FINDS.<br />CLEAR PICKS.</span><span>EXPLORE / 04</span></div>
+                {project.visual === "redclub" ? (
+                  <div className="redclub-preview">
+                    <div className="redclub-preview-top"><span>REDCLUB</span><span>GROWTH, ENGINEERED</span></div>
+                    <div className="redclub-preview-center"><span>CREATORS</span><b>×</b><span>AFFILIATES</span></div>
+                    <div className="redclub-preview-bottom"><span>FROM INFLUENCE<br />TO PERFORMANCE</span><span>STRATEGY / SCALE</span></div>
                   </div>
                 ) : project.visual === "grails" ? (
                   <div className="auction-preview">
@@ -136,7 +136,7 @@ export default function Home() {
                     <div className="preview-object"><span className="record-disc" /><span className="record-label">HG</span></div>
                     <div className="preview-bottom"><span>HIP-HOP<br />HISTORY.</span><span className="preview-arrow"><ArrowOutwardRounded /></span></div>
                   </div>
-                ) : project.visual === "berides" ? <div className="garage-preview">
+      ) : project.visual === "berides" ? <div className="garage-preview">
                     <span className="garage-label">be / RIDES</span>
                     <div className="car-shape"><span /><i /><b /></div>
                     <div className="garage-caption"><span>BUILT DIFFERENT.</span><span>DISCOVER YOUR NEXT RIDE ↗</span></div>
@@ -157,7 +157,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="redclub-note"><span className="redclub-mark">05</span><p><strong>Redclub</strong><span>Project details will be added when ready.</span></p><span className="soon-label">DETAILS TO FOLLOW</span></div>
       </section>
 
       <section className="personal-section section-wrap" id="personal-projects">

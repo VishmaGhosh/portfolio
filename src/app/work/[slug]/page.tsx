@@ -8,6 +8,9 @@ import AutoAwesomeRounded from "@mui/icons-material/AutoAwesomeRounded";
 import Inventory2Rounded from "@mui/icons-material/Inventory2Rounded";
 import PeopleAltRounded from "@mui/icons-material/PeopleAltRounded";
 import StorefrontRounded from "@mui/icons-material/StorefrontRounded";
+import CampaignRounded from "@mui/icons-material/CampaignRounded";
+import GroupsRounded from "@mui/icons-material/GroupsRounded";
+import QueryStatsRounded from "@mui/icons-material/QueryStatsRounded";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
 type Surface = {
@@ -15,7 +18,7 @@ type Surface = {
   label: string;
   description: string;
   details: string[];
-  icon: "store" | "admin" | "studio";
+  icon: "store" | "admin" | "studio" | "campaign" | "influencer" | "analytics";
 };
 
 type Project = {
@@ -33,7 +36,7 @@ type Project = {
   companyUrl?: string;
   personal?: boolean;
   liveUrl?: string;
-  visual: "grails" | "berides" | "drops" | "affiliate" | "personal";
+  visual: "grails" | "berides" | "drops" | "redclub" | "personal";
 };
 
 const projects: Record<string, Project> = {
@@ -129,18 +132,42 @@ const projects: Record<string, Project> = {
   },
   "affiliate-marketing": {
     number: "04",
-    name: "Affiliate Marketing",
-    category: "Affiliate Marketing / Product Discovery",
-    headline: "A clearer journey from useful content to products.",
+    name: "Redclub",
+    category: "Affiliate Marketing / Influencer Growth",
+    headline: "Performance marketing, powered by creators and data.",
     overview:
-      "An affiliate marketing experience focused on helping visitors discover promoted products through content-led browsing. The site connects editorial and offer discovery with a direct path to the retailer carrying each product.",
+      "Redclub is a digital growth company focused on influencer-led traffic, affiliate funnels, and performance marketing. Its website presents services for e-commerce and iGaming brands, from creator partnerships and campaign execution to attribution, optimization, and market expansion.",
     contribution:
-      "My frontend contribution focused on responsive, reusable product discovery interfaces. I worked on presenting content and product information clearly, supporting browse-to-product journeys, and maintaining a consistent experience across screen sizes.",
+      "I contributed to the frontend experience for Redclub’s marketing website, presenting the company’s services and campaign approach through responsive, reusable page sections. The work focused on making its offering easy to explore—from affiliate and influencer growth services through measurement, optimization, and contact pathways.",
     impact:
-      "The interface gives visitors a straightforward route from discovering a product to reaching its retailer, while reusable UI patterns support consistent content and product presentation across the site.",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Material UI", "REST APIs"],
-    focus: ["Affiliate product discovery", "Content-led browsing", "Product information", "Retailer handoff", "Responsive UI", "Reusable components"],
-    visual: "affiliate",
+      "The site brings Redclub’s service areas, campaign process, and performance approach into one responsive experience, helping prospective partners understand the offering and take the next step. The public site describes attribution and optimization capabilities; no campaign performance results are attributed to my frontend work here.",
+    stack: ["React", "Next.js", "TypeScript", "Responsive UI", "Reusable Components"],
+    focus: ["Affiliate marketing", "Influencer traffic", "Campaign services", "Attribution & reporting", "Responsive UI", "Reusable page sections"],
+    productUrl: "https://www.theredclub.com/",
+    surfaces: [
+      {
+        name: "Affiliate & performance",
+        label: "01 / PLAN",
+        icon: "campaign",
+        description: "Campaign frameworks connect partner traffic with measurable business goals.",
+        details: ["CPA, revenue share, and CPC models", "Affiliate funnel and offer planning", "Brand-aligned campaign strategy"],
+      },
+      {
+        name: "Influencer traffic",
+        label: "02 / ACTIVATE",
+        icon: "influencer",
+        description: "Creator partnerships and content are presented as performance channels.",
+        details: ["Creator and publisher partnerships", "Campaign briefs and content rollout", "Influencer-led traffic across channels"],
+      },
+      {
+        name: "Attribution & scale",
+        label: "03 / OPTIMIZE",
+        icon: "analytics",
+        description: "Tracking and iteration support campaign optimization and expansion.",
+        details: ["Traffic and conversion measurement", "Creative, channel, and campaign optimization", "Market expansion with compliance support"],
+      },
+    ],
+    visual: "redclub",
   },
   "live-store": {
     number: "P1", name: "24x7 Live Store", category: "Personal / E-commerce",
@@ -205,6 +232,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 function SurfaceIcon({ icon }: { icon: Surface["icon"] }) {
+  if (icon === "campaign") return <CampaignRounded />;
+  if (icon === "influencer") return <GroupsRounded />;
+  if (icon === "analytics") return <QueryStatsRounded />;
   if (icon === "store") return <StorefrontRounded />;
   if (icon === "admin") return <PeopleAltRounded />;
   return <AutoAwesomeRounded />;
@@ -232,11 +262,11 @@ function ProjectArtwork({ visual, name }: { visual: Project["visual"]; name: str
           <div className="case-video-frame"><span /></div>
           <div className="case-mock-bottom"><span>THE DROP IS<br />IN THE DETAILS.</span><span>SHOP THE MOMENT ↗</span></div>
         </div>
-      ) : visual === "affiliate" ? (
-        <div className="case-art-mock affiliate-mock">
-          <div className="case-mock-bar"><span>FINDS / EDIT</span><span>DISCOVER · COMPARE · EXPLORE</span></div>
-          <div className="affiliate-case-products"><i /><i /><i /></div>
-          <div className="case-mock-bottom"><span>GOOD FINDS.<br />CLEAR PICKS.</span><span>EXPLORE PRODUCTS ↗</span></div>
+      ) : visual === "redclub" ? (
+        <div className="case-art-mock redclub-mock">
+          <div className="case-mock-bar"><span>REDCLUB</span><span>GROWTH, ENGINEERED</span></div>
+          <div className="redclub-case-flow"><span>CREATORS</span><b>×</b><span>AFFILIATES</span></div>
+          <div className="case-mock-bottom"><span>FROM INFLUENCE<br />TO PERFORMANCE.</span><span>STRATEGY · SCALE</span></div>
         </div>
       ) : (
         <div className="case-art-mock personal-mock"><div className="case-mock-bar"><span>{name.toUpperCase()}</span><span>PERSONAL BUILD</span></div><div className="personal-art-mark">V<span>.</span></div><div className="case-mock-bottom"><span>BUILT TO LEARN.<br />MADE TO WORK.</span><span>PROJECT VISUAL</span></div></div>
@@ -285,9 +315,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {project.surfaces ? (
           <section className="case-section case-surfaces">
             <div className="case-section-heading">
-              <p className="eyebrow">/// THREE CONNECTED SURFACES</p>
-              <h2>One platform.<br /><span>Three ways in.</span></h2>
-              <p>Each surface has a different audience and job. Together, they make the marketplace easier to discover, manage, and grow.</p>
+              <p className="eyebrow">/// {project.name === "Redclub" ? "THREE GROWTH PILLARS" : "THREE CONNECTED SURFACES"}</p>
+              {project.name === "Redclub" ? <h2>From campaign plan<br /><span>to measurable growth.</span></h2> : <h2>One platform.<br /><span>Three ways in.</span></h2>}
+              <p>{project.name === "Redclub" ? "Redclub brings affiliate strategy, creator-powered traffic, and performance optimization together to help brands grow." : "Each surface has a different audience and job. Together, they make the marketplace easier to discover, manage, and grow."}</p>
             </div>
             <div className="surface-grid">
               {project.surfaces.map((surface) => (
