@@ -125,10 +125,10 @@ export default function Home() {
               <Link className={`project-visual ${project.visual}`} href={project.href} aria-label={`View the ${project.name} case study`}>
                 <div className="visual-grid" />
                 {project.visual === "redclub" ? (
-                  <div className="redclub-preview">
-                    <div className="redclub-preview-top"><span>REDCLUB</span><span>GROWTH, ENGINEERED</span></div>
-                    <div className="redclub-preview-center"><span>CREATORS</span><b>×</b><span>AFFILIATES</span></div>
-                    <div className="redclub-preview-bottom"><span>FROM INFLUENCE<br />TO PERFORMANCE</span><span>STRATEGY / SCALE</span></div>
+                  <div className="drops-preview redclub-preview">
+                    <div className="drops-top redclub-preview-top"><span>REDCLUB</span><span>GROWTH, ENGINEERED</span></div>
+                    <div className="redclub-preview-center"><span>CREATORS</span><b>×</b><span>PARTNERS</span></div>
+                    <div className="drops-bottom redclub-preview-bottom"><span>FROM INFLUENCE<br />TO PERFORMANCE</span><span>STRATEGY / SCALE</span></div>
                   </div>
                 ) : project.visual === "grails" ? (
                   <div className="auction-preview">
