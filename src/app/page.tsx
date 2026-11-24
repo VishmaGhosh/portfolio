@@ -7,6 +7,10 @@ import LinkedIn from "@mui/icons-material/LinkedIn";
 import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import PhoneIphoneRounded from "@mui/icons-material/PhoneIphoneRounded";
 import GitHub from "@mui/icons-material/GitHub";
+import DownloadRounded from "@mui/icons-material/DownloadRounded";
+import BoltRounded from "@mui/icons-material/BoltRounded";
+import SearchRounded from "@mui/icons-material/SearchRounded";
+import DevicesRounded from "@mui/icons-material/DevicesRounded";
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
@@ -44,6 +48,17 @@ const projects = [
     visual: "drops",
     note: "Frontend development · eOrigami Software",
   },
+  {
+    number: "04",
+    name: "Affiliate Marketing",
+    category: "Affiliate marketing · Product discovery",
+    description:
+      "A product discovery experience connecting useful content and promoted products with clear paths to retailer destinations.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    href: "/work/affiliate-marketing",
+    visual: "affiliate",
+    note: "Frontend development · eOrigami Software",
+  },
 ];
 
 const capabilities = [
@@ -51,6 +66,15 @@ const capabilities = [
   ["02", "Rendering & speed", "SSR, SEO, and focused performance improvements for real pages."],
   ["03", "State & APIs", "Redux Toolkit, REST integrations, and reliable user flows."],
 ];
+
+const skillHighlights = [
+  { label: "React & Next.js", detail: "Product UI and server rendering", icon: <CodeRounded /> },
+  { label: "Responsive UI", detail: "Mobile-first, accessible layouts", icon: <DevicesRounded /> },
+  { label: "Performance & SEO", detail: "Fast pages built to be discoverable", icon: <BoltRounded /> },
+  { label: "Product discovery", detail: "Clear browsing and conversion flows", icon: <SearchRounded /> },
+];
+
+const skillTags = ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Material UI", "Redux Toolkit", "REST APIs", "Node.js", "Firebase", "HTML", "CSS"];
 
 const personalProjects = [
   { slug: "live-store", name: "24x7 Live Store", description: "An authenticated e-commerce storefront with product browsing and shopping flows, built with React, Redux, and Hooks.", stack: ["React", "Redux", "React Hooks"], link: "https://e-commerce-12bd0.web.app/login" },
@@ -75,6 +99,7 @@ export default function Home() {
           <div className="hero-actions">
             <a className="button button-primary" href="#work">Explore my work <ArrowOutwardRounded fontSize="small" /></a>
             <a className="text-link" href="#about">A little about me <ArrowDownwardRounded fontSize="small" /></a>
+            <a className="text-link resume-link" href="/resume.pdf" download="Vishma-Ghosh-Resume.pdf"><DownloadRounded fontSize="small" /> Download resume</a>
           </div>
         </div>
         <div className="hero-art" aria-hidden="true">
@@ -99,7 +124,13 @@ export default function Home() {
             <article className="project-card" key={project.number}>
               <Link className={`project-visual ${project.visual}`} href={project.href} aria-label={`View the ${project.name} case study`}>
                 <div className="visual-grid" />
-                {project.visual === "grails" ? (
+                {project.visual === "affiliate" ? (
+                  <div className="affiliate-preview">
+                    <div className="affiliate-top"><span>FINDS / EDIT</span><span>CURATED FOR YOU</span></div>
+                    <div className="affiliate-products"><i /><i /><i /></div>
+                    <div className="affiliate-bottom"><span>GOOD FINDS.<br />CLEAR PICKS.</span><span>EXPLORE / 04</span></div>
+                  </div>
+                ) : project.visual === "grails" ? (
                   <div className="auction-preview">
                     <div className="preview-top"><span>HG / LOT 028</span><span>LIVE AUCTION</span></div>
                     <div className="preview-object"><span className="record-disc" /><span className="record-label">HG</span></div>
@@ -126,7 +157,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="redclub-note"><span className="redclub-mark">04</span><p><strong>Redclub</strong><span>Project details will be added when ready.</span></p><span className="soon-label">DETAILS TO FOLLOW</span></div>
+        <div className="redclub-note"><span className="redclub-mark">05</span><p><strong>Redclub</strong><span>Project details will be added when ready.</span></p><span className="soon-label">DETAILS TO FOLLOW</span></div>
       </section>
 
       <section className="personal-section section-wrap" id="personal-projects">
@@ -185,7 +216,11 @@ export default function Home() {
             <p className="experience-company">GKCIET, Malda · 2016–2019</p>
           </article>
         </div>
-        <div className="skills-row"><span className="eyebrow">TOOLKIT</span><p>JavaScript · TypeScript · React · Next.js · Tailwind CSS · Material UI · Redux Toolkit · REST APIs · Node.js · Firebase · HTML · CSS</p></div>
+        <div className="skills-showcase" aria-labelledby="skills-title">
+          <div className="skills-showcase-heading"><div><p className="eyebrow">/// CORE TOOLKIT</p><h3 id="skills-title">Skills I bring to the build.</h3></div><span>DESIGN · ENGINEERING · DELIVERY</span></div>
+          <div className="skill-highlight-grid">{skillHighlights.map((skill) => <article className="skill-highlight" key={skill.label}><span className="skill-icon">{skill.icon}</span><div><h4>{skill.label}</h4><p>{skill.detail}</p></div><ArrowOutwardRounded className="skill-arrow" /></article>)}</div>
+          <div className="skill-tag-row" aria-label="Additional skills">{skillTags.map((skill) => <span className="skill-tag" key={skill}>{skill}</span>)}</div>
+        </div>
       </section>
 
       <section className="contact-section section-wrap" id="contact">

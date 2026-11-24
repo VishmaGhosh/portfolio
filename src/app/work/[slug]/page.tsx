@@ -33,7 +33,7 @@ type Project = {
   companyUrl?: string;
   personal?: boolean;
   liveUrl?: string;
-  visual: "grails" | "berides" | "drops" | "personal";
+  visual: "grails" | "berides" | "drops" | "affiliate" | "personal";
 };
 
 const projects: Record<string, Project> = {
@@ -127,6 +127,21 @@ const projects: Record<string, Project> = {
     focus: ["Shoppable video feed", "Creator profiles", "Product tagging", "Creator dashboard", "Responsive UI", "Redux state"],
     visual: "drops",
   },
+  "affiliate-marketing": {
+    number: "04",
+    name: "Affiliate Marketing",
+    category: "Affiliate Marketing / Product Discovery",
+    headline: "A clearer journey from useful content to products.",
+    overview:
+      "An affiliate marketing experience focused on helping visitors discover promoted products through content-led browsing. The site connects editorial and offer discovery with a direct path to the retailer carrying each product.",
+    contribution:
+      "My frontend contribution focused on responsive, reusable product discovery interfaces. I worked on presenting content and product information clearly, supporting browse-to-product journeys, and maintaining a consistent experience across screen sizes.",
+    impact:
+      "The interface gives visitors a straightforward route from discovering a product to reaching its retailer, while reusable UI patterns support consistent content and product presentation across the site.",
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Material UI", "REST APIs"],
+    focus: ["Affiliate product discovery", "Content-led browsing", "Product information", "Retailer handoff", "Responsive UI", "Reusable components"],
+    visual: "affiliate",
+  },
   "live-store": {
     number: "P1", name: "24x7 Live Store", category: "Personal / E-commerce",
     headline: "A storefront built around a clear shopping journey.",
@@ -216,6 +231,12 @@ function ProjectArtwork({ visual, name }: { visual: Project["visual"]; name: str
           <div className="case-mock-bar"><span>ONLY / DROPS</span><span>WATCH · DISCOVER · SHOP</span></div>
           <div className="case-video-frame"><span /></div>
           <div className="case-mock-bottom"><span>THE DROP IS<br />IN THE DETAILS.</span><span>SHOP THE MOMENT ↗</span></div>
+        </div>
+      ) : visual === "affiliate" ? (
+        <div className="case-art-mock affiliate-mock">
+          <div className="case-mock-bar"><span>FINDS / EDIT</span><span>DISCOVER · COMPARE · EXPLORE</span></div>
+          <div className="affiliate-case-products"><i /><i /><i /></div>
+          <div className="case-mock-bottom"><span>GOOD FINDS.<br />CLEAR PICKS.</span><span>EXPLORE PRODUCTS ↗</span></div>
         </div>
       ) : (
         <div className="case-art-mock personal-mock"><div className="case-mock-bar"><span>{name.toUpperCase()}</span><span>PERSONAL BUILD</span></div><div className="personal-art-mark">V<span>.</span></div><div className="case-mock-bottom"><span>BUILT TO LEARN.<br />MADE TO WORK.</span><span>PROJECT VISUAL</span></div></div>
